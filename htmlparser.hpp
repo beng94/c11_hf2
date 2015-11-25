@@ -2,7 +2,7 @@
 #define HTMLPARSER_H
 
 #include <string>
-#include <queue>
+#include <set>
 
 #include "link.hpp"
 
@@ -15,7 +15,7 @@ class HTMLParser
         HTMLParser () = delete;
         HTMLParser (std::string);
 
-        std::queue<Link> parse();
+        std::set<Link> parse();
 };
 
 #endif
