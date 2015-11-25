@@ -7,7 +7,7 @@ Connector::Connector (std::string root) : root{root} {}
 void Connector::discover (int n)
 {
     Link root_link(root);
-    HTMLParser parser(root_link.get_url());
+    HTMLParser parser(root_link.get_source());
     std::set<Link> links = parser.parse();
 
     std::set<Link> tmp_links;
@@ -15,7 +15,7 @@ void Connector::discover (int n)
     {
         for (auto l: links)
         {
-            HTMLParser p(l.get_url());
+            HTMLParser p(l.get_source());
             std::set<Link> new_links = p.parse();
             //TODO: check whether we've alredy found them
 

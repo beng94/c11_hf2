@@ -19,6 +19,7 @@ class Link
         void download_url () const;
         std::string get_url ();
         std::string get_name ();
+        std::string get_source ();
 };
 
 #endif

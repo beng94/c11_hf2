@@ -41,3 +41,5 @@ void Link::download_url () const
 std::string Link::get_url () { return url; }
 
 std::string Link::get_name () { return name; }
+
+std::string Link::get_source () { return source; }
