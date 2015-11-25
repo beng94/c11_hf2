@@ -1,3 +1,6 @@
+#ifndef CONNECTOR_H
+#define CONNECTOR_H
+
 #include <string>
 
 class Connector
@@ -12,3 +15,5 @@ class Connector
         void discover (int);
         void display ();
 };
+
+#endif
