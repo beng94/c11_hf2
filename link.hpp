@@ -8,6 +8,7 @@ class Link
     private:
         std::string url;
         std::string name;
+        std::string source = "";
 
     public:
         Link () = delete;
@@ -15,6 +16,7 @@ class Link
 
         bool operator< (const Link&) const;
 
+        void download_url () const;
         std::string get_url ();
         std::string get_name ();
 };
