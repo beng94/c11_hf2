@@ -13,6 +13,8 @@ class Link
         Link () = delete;
         Link (std::string);
 
+        bool operator< (const Link&) const;
+
         std::string get_url ();
         std::string get_name ();
 };
