@@ -2,7 +2,7 @@ BINARY = OUT
 OBJECTS = main.o link.o graph.o connector.o htmlparser.o
 HEADERS = connector.hpp graph.hpp htmlparser.hpp link.hpp
 
-CXX = g++ -g
+CXX = clang++-3.5 -g
 CXXFLAGS = -std=c++11 -Wall -pedantic
 DLIBS = -lcurl
 
