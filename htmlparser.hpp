@@ -9,7 +9,7 @@
 class HTMLParser
 {
     private:
-        std::string url;
+        std::string source;
 
     public:
         HTMLParser () = delete;
