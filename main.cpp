@@ -2,9 +2,9 @@
 
 int main()
 {
-    Connector c("www.bme.hu");
-    c.discover(5);
-    c.display();
+    Connector c("https://infoc.eet.bme.hu/");
+    c.discover(2);
+    c.gen_dot("out.dot");
 
     return 0;
 }
