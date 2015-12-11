@@ -4,8 +4,20 @@
 
 #include "link.hpp"
 
-Link::Link (std::string url) : url{url}
+static std::string make_name
+(const std::string& url, const std::string& root)
 {
+    std::regex r_root(root + "(.*)");
+    std::smatch match;
+    if (std::regex_match(url, match, r_root))
+        return match[1];
+
+    return url;
+}
+
+Link::Link (std::string& url, std::string root) : url{url}
+{
+    name = make_name(url, root);
     download_url();
 }
 
@@ -19,6 +31,7 @@ static size_t write_callback (void *contents, size_t size,
     return new_size;
 }
 
+/* Letölti a weboldal forrását és elmenti a Link::source változóba. */
 void Link::download_url ()
 {
     CURL *curl;
@@ -35,7 +48,7 @@ void Link::download_url ()
         curl_easy_cleanup(curl);
     }
 
-    /*std::regex r_nav("(<nav.*>)");
+    std::regex r_nav("(<nav.*>)");
     std::smatch m;
     while (std::regex_search(source, m, r_nav))
     {
@@ -49,11 +62,10 @@ void Link::download_url ()
         //getchar();
         //std::cout << source << std::endl;
         //getchar();
-    }*/
-    //std::cout << source << std::endl;
-    //getchar();
+    }
 }
 
+/* Megkeresi a forrásban a linkeket és visszaadja egy listában */
 std::list<std::string> Link::find_urls ()
 {
     std::list<std::string> new_links;
@@ -70,9 +82,9 @@ std::list<std::string> Link::find_urls ()
     return new_links;
 }
 
+
 std::string Link::get_url () const { return url; }
 
-std::string Link::get_source ()
-{
-    return source;
-}
+std::string Link::get_source () const { return source; }
+
+std::string Link::get_name () const { return name; }
